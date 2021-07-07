@@ -1,0 +1,13 @@
+<div class="container">
+  <button (click)="openEditModal()">Add</button>
+  <div class="sight-element" *ngFor="let sight of sights">
+    <div class="actions">
+      <button (click)="openDetailsModal(sight)">Details</button>
+      <button (click)="openEditModal(sight)">Edit</button>
+      <button (click)="deleteSight(sight)">Delete</button>
+    </div>
+    <h4>{{sight.name}}</h4>
+      <sub>{{sight.longitude}} {{sight.latitude}}</sub>
+      <div class="highlight" [style.background-color]="sight.getColor()"></div>
+  </div>
+</div>

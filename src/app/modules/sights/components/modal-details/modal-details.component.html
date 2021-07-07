@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>{{sight.name}}</h1>
+<div mat-dialog-content>
+  <p>Country: {{sight.country.name}}, {{sight.country.iata_code}}</p>
+  <p>Description: {{sight.description}}</p>
+  <p>Latitude:{{sight.latitude}}, Longitude: {{sight.longitude}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Close</button>
+</div>

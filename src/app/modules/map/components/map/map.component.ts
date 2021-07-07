@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {SightseeingPoint} from '../models/sightseeing-point';
+import {SightseeingPoint} from '../../../models/sightseeing-point';
 import * as mapbox from 'ngx-mapbox-gl';
-import {Location} from '../models/location';
+import {Location} from '../../../models/location';
 
 @Component({
   selector: 'app-map',
@@ -15,7 +15,6 @@ export class MapComponent {
   @Input() sights: SightseeingPoint[];
   @Output() selectedSightEvent = new EventEmitter<SightseeingPoint>();
   loading = true;
-
   centerMap(location: Location): void {
     this.loading = false;
     this.map.mapInstance.flyTo({ center: [location.longitude, location.latitude] });

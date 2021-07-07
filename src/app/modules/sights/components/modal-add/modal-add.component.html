@@ -1,0 +1,91 @@
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" class="make-column">
+        <mat-form-field>
+            <mat-label for="name">Name</mat-label>
+            <input formControlName="name"  matInput id="name" type="text" name="Name">
+          <mat-error *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger">
+            <div *ngIf="name.errors?.required">
+              Name is required!
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="longitude">Longitude</mat-label>
+            <input formControlName="longitude" matInput id="longitude" type="number" name="longitude">
+          <mat-error *ngIf="longitude.invalid && (longitude.dirty || longitude.touched)"
+               class="alert alert-danger">
+            <div *ngIf="longitude.errors?.required">
+             Longitude is required!
+            </div>
+            <div *ngIf="longitude.errors?.pattern">
+             Longitude is bad!
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="latitude">latitude</mat-label>
+            <input formControlName="latitude" matInput id="latitude" type="number" name="latitude">
+          <mat-error *ngIf="latitude.invalid && (latitude.dirty || latitude.touched)"
+               class="alert alert-danger">
+            <div *ngIf="latitude.errors?.required">
+              Latitude is required!
+            </div>
+            <div *ngIf="latitude.errors?.pattern">
+              Latitude is bad!
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="country">Country name</mat-label>
+            <input formControlName="country" matInput id="country" type="text" name="country">
+          <mat-error *ngIf="country.invalid && (country.dirty || country.touched)"
+               class="alert alert-danger">
+            <div *ngIf="country.errors?.required">
+              Country name is required!
+            </div>
+          </mat-error>
+        </mat-form-field>
+      <mat-form-field>
+        <mat-label for="countryCode">Iata code</mat-label>
+        <input formControlName="countryCode" matInput id="countryCode" type="text" name="countryCode">
+        <mat-error *ngIf="countryCode.invalid && (countryCode.dirty || countryCode.touched)"
+             class="alert alert-danger">
+          <div *ngIf="countryCode.errors?.required">
+            Country Code is required!
+          </div>
+        </mat-error>
+      </mat-form-field>
+        <mat-form-field>
+            <mat-label for="description">Description</mat-label>
+          <textarea
+            formControlName="description"
+            matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+          ></textarea>
+          <mat-error *ngIf="description.invalid && (description.dirty || description.touched)"
+               class="alert alert-danger">
+            <div *ngIf="description.errors?.required">
+              Description is required!
+            </div>
+            <div *ngIf="description.errors?.maxLength">
+              Max Length is 256 chars!
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Color</mat-label>
+          <mat-select formControlName="color" matSelect name="color">
+            <mat-option *ngFor="let color of colors; let i = index" [value]="i+1">{{color}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="color.invalid && (color.dirty || color.touched)"
+               class="alert alert-danger">
+            <div *ngIf="color.errors?.required">
+              Color is required!
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <button [disabled]="form.invalid" mat-stroked-button color="primary" type="submit">Submit</button>
+    </form>
+</div>

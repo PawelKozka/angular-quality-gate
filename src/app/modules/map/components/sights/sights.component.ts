@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {SightseeingPoint} from '../models/sightseeing-point';
+import {SightseeingPoint} from '../../../models/sightseeing-point';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {SightsService} from '../services/sights.service';
+import {SightsService} from '../../../services/sights.service';
 import {MapComponent} from '../map/map.component';
-import {Location} from '../models/location';
+import {Location} from '../../../models/location';
 
 @Component({
   selector: 'app-sights',

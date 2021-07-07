@@ -3,26 +3,24 @@ import {NgModule} from '@angular/core';
 
 
 import {AppComponent} from './app.component';
-import {MapComponent} from './map/map.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxMapboxGLModule} from 'ngx-mapbox-gl';
 import {environment} from '../environments/environment';
-import { SightsComponent } from './sights/sights.component';
 import { NavComponent } from './nav/nav.component';
-import {SightsListComponent} from './sights-list/sights-list.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatCardModule} from '@angular/material/card';
 import {AppRoutingModule} from './app-routing.module';
-
+import {SightsModule} from './modules/sights/sights.module';
+import {MapModule} from './modules/map/map.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent,
-    SightsComponent,
     NavComponent,
-    SightsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +31,10 @@ import {AppRoutingModule} from './app-routing.module';
     ReactiveFormsModule,
     HttpClientModule,
     MatTabsModule,
-    MatCardModule,
+    SightsModule,
+    MapModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
