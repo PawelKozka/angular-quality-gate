@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {SightsService} from '../../../services/sights.service';
 import {MapComponent} from '../map/map.component';
 import {Location} from '../../../models/location';
+import {NavService} from '../../../services/nav.service';
+import {City} from '../../../models/city';
 
 @Component({
   selector: 'app-sights',
@@ -19,16 +21,20 @@ export class SightsComponent implements OnInit {
 
   constructor(
     private sightsService: SightsService,
-    private router: Router
+    private router: Router,
+    private navService: NavService
   ) {
   }
 
   ngOnInit(): void {
     this.currentCity = new Location(19.9449, 50.0646);
     this.sights$ = this.sightsService.getSights();
+    this.navService.citySubject.subscribe(city => {
+      this.currentCity = new Location(city.longitude, city.latitude)
+      this.centerMap(city);
+    });
   }
-
-  centerMap(location: Location): void {
+  centerMap(location: Location | City): void {
     this.mapComponent.centerMap(location);
   }
 

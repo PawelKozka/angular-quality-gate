@@ -1,3 +1,16 @@
 {
-  "sights": []
+  "sights": [
+    {
+      "name": "Belweder",
+      "longitude": 21.0276,
+      "latitude": 52.2132,
+      "country": {
+        "name": "Poland ",
+        "iata_code": "PL"
+      },
+      "description": "belweder",
+      "color": 2,
+      "id": "_1dpjx8gkc"
+    }
+  ]
 }

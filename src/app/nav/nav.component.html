@@ -1,5 +1,10 @@
 <nav mat-tab-nav-bar>
   <a *ngFor="let link of links"
      routerLink="{{link.path}}" routerLinkActive="active-link"> {{link.title}} </a>
+  <mat-form-field appearance="fill">
+  <mat-select [(ngModel)]="selectedCity" (selectionChange)="onSelectChange()">
+  <mat-option *ngFor="let city of cities" [value]="city.name">{{city.name}}</mat-option>
+  </mat-select>
+  </mat-form-field>
 </nav>
 <div class="nav-shadow"></div>

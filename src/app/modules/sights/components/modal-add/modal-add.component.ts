@@ -73,7 +73,8 @@ export class ModalAddComponent implements OnInit {
   onSubmit(): void {
       const {name, longitude, latitude, description, color, countryCode} = this.form.value;
       const country: Country = {name: this.form.value.country, iata_code: countryCode};
-      const newSight = new SightseeingPoint(name, longitude, latitude, country, description, color, SightseeingPoint.generateID());
+      const id = this.sight.id ? this.sight.id : SightseeingPoint.generateID()
+      const newSight = new SightseeingPoint(name, longitude, latitude, country, description, color, id);
       this.isEdited ?
         this.sightService.editSight(newSight).catch(console.error) :
         this.sightService.addSight(newSight).catch(console.error);

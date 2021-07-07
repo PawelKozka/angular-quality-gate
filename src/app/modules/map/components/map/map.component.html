@@ -18,4 +18,12 @@
       <div class="sight-marker"></div>
     </div>
   </mgl-marker>
+  <mgl-marker *ngIf="navService.city" [lngLat]="[location.longitude, location.latitude]">
+    <div class="airport-marker">
+      <div class="price">
+        {{navService.city.name}}: {{navService.city.longitude}}, {{navService.city.latitude}}
+      </div>
+      <div class="sight-marker">Sights: {{sightsAround}}</div>
+    </div>
+  </mgl-marker>
 </mgl-map>
