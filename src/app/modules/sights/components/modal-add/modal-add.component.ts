@@ -43,7 +43,7 @@ export class ModalAddComponent implements OnInit {
       ]),
       description: new FormControl('', [
         Validators.required,
-        Validators.max(256)
+        Validators.maxLength(256)
       ]),
       color: new FormControl('', [
         Validators.required

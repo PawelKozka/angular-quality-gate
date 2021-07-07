@@ -1,5 +1,5 @@
 <div class="container">
-  <button (click)="openEditModal()">Add</button>
+  <button class="add-btn" (click)="openEditModal()">Add</button>
   <div class="sight-element" *ngFor="let sight of sights">
     <div class="actions">
       <button (click)="openDetailsModal(sight)">Details</button>

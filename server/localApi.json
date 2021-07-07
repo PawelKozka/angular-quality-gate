@@ -1,28 +1,3 @@
 {
-  "sights": [
-    {
-      "name": "w",
-      "longitude": 22,
-      "latitude": 22,
-      "country": {
-        "name": "ww",
-        "iata_code": "ss"
-      },
-      "description": "ww",
-      "color": 2,
-      "id": "_5e6l63i4j"
-    },
-    {
-      "name": "Kopiec",
-      "longitude": 25,
-      "latitude": 30,
-      "country": {
-        "name": "Polska",
-        "iata_code": "PL"
-      },
-      "description": "test",
-      "color": 2,
-      "id": "_fo2g665du"
-    }
-  ]
+  "sights": []
 }

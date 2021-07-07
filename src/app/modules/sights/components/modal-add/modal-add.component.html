@@ -63,13 +63,14 @@
             matInput
                     cdkTextareaAutosize
                     cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"
           ></textarea>
           <mat-error *ngIf="description.invalid && (description.dirty || description.touched)"
                class="alert alert-danger">
             <div *ngIf="description.errors?.required">
               Description is required!
             </div>
-            <div *ngIf="description.errors?.maxLength">
+            <div *ngIf="description.errors?.maxlength">
               Max Length is 256 chars!
             </div>
           </mat-error>
@@ -86,6 +87,6 @@
             </div>
           </mat-error>
         </mat-form-field>
-        <button [disabled]="form.invalid" mat-stroked-button color="primary" type="submit">Submit</button>
+        <button class="submit" [disabled]="form.invalid" mat-stroked-button color="primary" type="submit">Submit</button>
     </form>
 </div>
