@@ -4,6 +4,7 @@ import {SightseeingPoint} from '../../../models/sightseeing-point';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SightsService} from '../../../services/sights.service';
 import {Country} from '../../../models/country';
+import {FormService} from '../../../services/form.service';
 
 @Component({
   selector: 'app-modal-add',
@@ -12,14 +13,15 @@ import {Country} from '../../../models/country';
 })
 export class ModalAddComponent implements OnInit {
   public colors: string[] = [];
-  form: FormGroup;
-  longitudeREGEX = `^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$`;
-  latitudeREGEX = `^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$`;
+  public form: FormGroup;
+  private longitudeREGEX = `^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$`;
+  private latitudeREGEX = `^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$`;
   private isEdited = false;
   constructor(
     public dialogRef: MatDialogRef<ModalAddComponent>,
     @Inject(MAT_DIALOG_DATA) public sight: SightseeingPoint,
-    private sightService: SightsService
+    private sightService: SightsService,
+    private formService: FormService
   ) { }
 
   ngOnInit(): void {
@@ -62,32 +64,12 @@ export class ModalAddComponent implements OnInit {
       });
     }
   }
-
-  get name(): AbstractControl {
-    return this.form.get('name');
+  showError(controlName: string, errorName: string): boolean {
+    return this.formService.showError(controlName, errorName, this.form);
   }
-
-  get longitude(): AbstractControl {
-    return this.form.get('longitude');
+  isErrorShowed(controlName: string): boolean {
+    return this.formService.isErrorShowed(this.form.get(controlName));
   }
-
-  get latitude(): AbstractControl {
-    return this.form.get('latitude');
-  }
-  get country(): AbstractControl {
-    return this.form.get('country');
-  }
-  get countryCode(): AbstractControl {
-    return this.form.get('countryCode');
-  }
-
-  get description(): AbstractControl {
-    return this.form.get('description');
-  }
-  get color(): AbstractControl {
-    return this.form.get('color');
-  }
-
   onSubmit(): void {
       const {name, longitude, latitude, description, color, countryCode} = this.form.value;
       const country: Country = {name: this.form.value.country, iata_code: countryCode};
